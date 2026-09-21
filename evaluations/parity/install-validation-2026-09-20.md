@@ -83,6 +83,34 @@ b08ccafe413d37d919f0cb6422885b745f64cfb4a3ac436480403e4403941b3f  ./objectives/n
 368c82fc671446d33b51d152cba2a7f7474c023943b755efb2c49041967d32d2  ./references/source-policy.md
 ```
 
+## Estado pós-promoção para `validated`
+
+As seções anteriores preservam o histórico da instalação executada enquanto a
+skill ainda estava em lifecycle `candidate`. Os hashes
+`0b465768e1bbeec5a70fbbc5c0b3b9ec9c366e0903888c409a0ab3da5c5c047d`,
+`83dff76a16a9b4acaefc96f29dc242c30db872cc88a4e47f2d2fa0f82e5546dd`,
+`d528819cb655a25963248be6151d60e2eddd2331abcc27388ec40bef2b699f2e` e
+`0057bc720c115417ef7043376b03769b944b82511b7bcb5c8a701ae9b526f722`
+pertencem somente a etapas anteriores à promoção e não identificam o manifesto
+nem o pacote distribuível validados finais.
+
+Depois da comparação funcional independente e da verificação contra as fontes
+originais, a skill foi promovida para `validated`, mantendo a versão `0.2.0` e
+os mesmos limites de uso. O destino continuou com **20 arquivos regulares, zero
+symlinks**, todos iguais aos caminhos distribuíveis correspondentes da origem.
+
+- Manifesto final `agent.yaml`:
+  `44fb7ef4bc0ba3d4373108211393c2e60e042b6c906d3ad8d9be6bc57786af78`.
+- Pacote final, pelo algoritmo reproduzível acima:
+  `36570f2744601f294f32dfec58ac6f540bd4b5f45f51aa0462501e65f8e2ee0f`.
+- Evidência da comparação: [gpt-comparison-2026-09-20.md](gpt-comparison-2026-09-20.md).
+- Evidência de confronto com as fontes:
+  [original-source-verification-2026-09-20.md](original-source-verification-2026-09-20.md).
+
+As correções documentais pós-promoção em `README.md`, `HOW-TO-USE.md` e neste
+registro não integram o pacote distribuível e, portanto, não alteram os dois
+hashes finais acima.
+
 ## Self-review e preocupações
 
 O agente novo produziu os seis casos sem acessar respostas anteriores e registrou resultados integrais, fontes usadas, fontes inacessíveis, lacunas, pedidos de dados e decisão segura. Q1 entrega conceito com fonte; Q2 um plano mesmo sem números; Q3 mensagem curta; Q4 investigação sem código arbitrário; Q5 matriz sem carga inventada; Q6 alternativa lícita sem falsa citação. Nenhum caso ficou apenas na recusa.

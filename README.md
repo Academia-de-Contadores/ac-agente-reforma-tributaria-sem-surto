@@ -4,7 +4,7 @@
 | --- | --- |
 | ID | `ac.reforma-tributaria-sem-surto` |
 | Versão | `0.2.0` |
-| Lifecycle | `candidate` |
+| Lifecycle | `validated` |
 
 ## Propósito
 
@@ -13,7 +13,7 @@ foco em IBS, CBS, IS, DFe/XML/ERP, créditos e respostas claras para clientes.
 
 Este repositório é a fonte de verdade do agente existente e também contém a
 skill instalável `$ac-reforma-tributaria-sem-surto`. O GPT online permanece como
-baseline preservado; a skill candidata acrescenta uma interface mais acionável
+baseline preservado; a skill validada acrescenta uma interface mais acionável
 sem inventar fontes nem fechar cálculos, regimes ou classificações sem suporte.
 
 ## Invocação
@@ -36,8 +36,10 @@ do pacote e com fontes oficiais quando o ambiente permitir consulta.
    agente; esses diretórios definem missão, papel, comportamento e limites.
 2. Para instalar somente o pacote distribuível ou adaptar esta versão, siga
    `HOW-TO-USE.md` e use `agent.yaml` como índice dos componentes canônicos.
-3. Registre novas capacidades em `skills/`, fontes curadas em `knowledge/` e
-   contratos externos em `connectors/`; nunca registre credenciais.
+3. Registre procedimentos internos opcionais em `skills/<nome>/SKILL.md`; o
+   entrypoint distribuível desta skill é o `SKILL.md` na raiz. Registre fontes
+   curadas em `knowledge/` e contratos externos em `connectors/`; nunca registre
+   credenciais.
 4. Adicione avaliações para cada mudança comportamental e execute:
 
    ```bash
