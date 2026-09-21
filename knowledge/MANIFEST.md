@@ -5,6 +5,10 @@
 - **Captura integral:** 2026-08-07
 - **Arquivos preservados:** 6/6
 - **Método:** download direto de cada anexo no editor autenticado do GPT Builder.
+- **Reconfirmação visual dos nomes:** 2026-09-20, 6/6 no editor autenticado.
+- **Verificação local dos binários preservados:** 2026-09-20, bytes e SHA-256 iguais aos valores históricos abaixo.
+- **Comparação binária online corrente:** não realizada; a interface inspecionada não expôs controle de download ao abrir os seis nomes. Isso é uma lacuna de evidência, não prova de mudança dos anexos.
+- **Auditoria corrente:** [live-editor-audit-2026-09-20.md](../evaluations/live-editor-audit-2026-09-20.md).
 
 | Arquivo preservado | SHA-256 | Bytes |
 | --- | --- | ---: |
@@ -15,4 +19,4 @@
 | `original/05-ECONET-FONTE-SECUNDARIA.md` | `0aa380ad3b766b9b06da1bd391f4c664295470e5fd6c3355ec5cab309be673cf` | 1782 |
 | `original/03-DOCUMENTOS-FISCAIS-ELETRONICOS.md` | `bd04fa2361e998bb83d894c8743f7f633d9901066b1e05573bfc1ee9b0b85538` | 2723 |
 
-Os arquivos foram copiados byte a byte com o mesmo nome exibido no GPT. Os hashes acima são a referência canônica para restauração e auditoria.
+Os arquivos foram copiados byte a byte em 2026-08-07 com o mesmo nome exibido no GPT. Os hashes acima são a referência canônica para restauração e auditoria dessa captura histórica. A reconfirmação visual de 2026-09-20 não atualiza a data do download nem comprova igualdade binária com o Knowledge online atual.
