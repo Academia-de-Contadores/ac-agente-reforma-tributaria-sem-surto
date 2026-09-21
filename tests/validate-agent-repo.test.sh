@@ -3,6 +3,7 @@ set -euo pipefail
 
 root="$(cd "$(dirname "$0")/.." && pwd)"
 validator="$root/scripts/validate-agent-repo.sh"
+agent_version="$(awk '/^  version:[[:space:]]*/ { print $2; exit }' "$root/agent.yaml")"
 
 for f in README.md HOW-TO-USE.md docs/REPOSITORY-STRUCTURE.md agent.yaml objectives/mission.md objectives/success-metrics.md \
   objectives/non-goals.md identity/soul.md identity/identity.md instructions/system.md \
@@ -32,12 +33,12 @@ mkdir -p "$fixture/profiles/validation-fixture" \
 printf '%s\n' \
   'schema_version: 1' \
   'name: validation-fixture' \
-  'canonical_agent_version: 0.1.0' \
+  "canonical_agent_version: $agent_version" \
   > "$fixture/profiles/validation-fixture/profile.yaml"
 printf '%s\n' \
   'schema_version: 1' \
   'name: validation-fixture' \
-  'canonical_agent_version: 0.1.0' \
+  "canonical_agent_version: $agent_version" \
   'target: validation-fixture' \
   > "$fixture/adapters/validation-fixture/adapter.yaml"
 
