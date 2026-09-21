@@ -9,9 +9,63 @@ reconstrução do conteúdo versionado, nunca o contrário sem revisão.
 
 ## Começo rápido
 
+Para usar a skill validada, instale apenas seu pacote distribuível e invoque
+`$ac-reforma-tributaria-sem-surto`. Não trate o checkout inteiro como diretório de
+skill: governança, avaliações, relatórios, testes e metadados Git são materiais
+de manutenção, não dependências de execução.
+
+## Instalação seletiva
+
+Execute a partir da raiz deste repositório. Revise o destino antes de substituir
+uma instalação existente.
+
+```bash
+skill_dest="${CODEX_HOME:-$HOME/.codex}/skills/ac-reforma-tributaria-sem-surto"
+mkdir -p "$skill_dest"/{agents,references,instructions,knowledge,identity,objectives}
+cp SKILL.md agent.yaml "$skill_dest"/
+cp -R agents/. "$skill_dest/agents/"
+cp -R references/. "$skill_dest/references/"
+cp -R instructions/. "$skill_dest/instructions/"
+cp -R knowledge/. "$skill_dest/knowledge/"
+cp -R identity/. "$skill_dest/identity/"
+cp -R objectives/. "$skill_dest/objectives/"
+rm -f "$skill_dest/instructions/.gitkeep" \
+  "$skill_dest/instructions/workflows/.gitkeep" \
+  "$skill_dest/knowledge/.gitkeep" \
+  "$skill_dest/identity/.gitkeep" \
+  "$skill_dest/objectives/.gitkeep"
+```
+
+O pacote inclui somente `SKILL.md`, `agent.yaml`, `agents/`, `references/`,
+`instructions/`, `knowledge/`, `identity/` e `objectives/`. Não copie `.git`,
+`.github`, `.superpowers`, `docs/`, `evaluations/`, `governance/`, `reports/`,
+`scripts/` ou `tests/`. Não há `connectors/` distribuível nesta versão.
+
+Valide a instalação apontando o validador de skills para `"$skill_dest"`.
+
+## Invocação real
+
+Mencione a skill no pedido:
+
+```text
+Use $ac-reforma-tributaria-sem-surto com /dfe para revisar este trecho de XML e listar o que falta validar no ERP.
+```
+
+Para um caso consultivo:
+
+```text
+Use $ac-reforma-tributaria-sem-surto com /diagnostico para separar fatos, hipóteses, riscos e ações D7/D30/D90 deste cliente.
+```
+
+Forneça dados reais somente quando a política do ambiente permitir. Prefira dados
+minimizados e remova segredos. Se faltarem elementos, a skill deve orientar o
+caminho e pedir os dados necessários sem fabricar conclusão.
+
+## Manutenção do repositório
+
 1. Abra uma branch do repositório canônico que será alterado.
 2. Defina ID, nome, versão e referências em `agent.yaml`.
-3. Preencha missão, métricas e não-objetivos; depois identidade e comportamento.
+3. Atualize o componente canônico responsável pela mudança.
 4. Adicione avaliações, rode a suíte e abra um pull request conforme
    `governance/CONTRIBUTING.md`.
 
@@ -50,12 +104,15 @@ manutenção, conversas, logs, dados de clientes, corpora brutos ou índices RAG
 Avalie a resposta e a segurança quando o conteúdo puder alterar comportamento ou
 risco.
 
-## Adicionar uma skill
+## Adicionar um procedimento interno opcional
 
-Crie `skills/<nome>/SKILL.md` com gatilho, entradas, passos, saída, limites,
-handoff humano e dependências. Inclua casos em `skills/<nome>/evaluations/` e
-registre a skill em `agent.yaml` quando ela fizer parte do agente. Uma skill é um
-procedimento acionável; uma regra aplicada sempre pertence a `instructions/`.
+O entrypoint distribuível desta skill é o `SKILL.md` na raiz. Para acrescentar
+um procedimento interno opcional ao agente canônico, crie
+`skills/<nome>/SKILL.md` com gatilho, entradas, passos, saída, limites, handoff
+humano e dependências. Inclua casos em `skills/<nome>/evaluations/` e registre o
+procedimento em `agent.yaml` quando ele fizer parte do agente. Um procedimento
+acionável fica em `skills/`; uma regra aplicada sempre pertence a
+`instructions/`.
 
 ## Adicionar um connector ou Action
 

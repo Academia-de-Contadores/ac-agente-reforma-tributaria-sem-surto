@@ -2,8 +2,8 @@ schema_version: 1
 agent:
   id: ac.reforma-tributaria-sem-surto
   name: Day Agente da Reforma Tributária Sem Surto
-  version: 0.1.0
-  lifecycle: source-capture
+  version: 0.2.0
+  lifecycle: validated
   owners:
     - Academia-de-Contadores
 catalog:
@@ -11,8 +11,11 @@ catalog:
 source_capture:
   status: accessible
   captured_at: 2026-08-06
+  last_verified_at: 2026-09-20
+  knowledge_binary_captured_at: 2026-08-07
   source_url: https://chatgpt.com/gpts/editor/g-6a725a3feec081919ba9131c9f475341
   record: evaluations/source-capture.md
+  current_audit: evaluations/live-editor-audit-2026-09-20.md
 objectives:
   mission: objectives/mission.md
   metrics: objectives/success-metrics.md
@@ -23,10 +26,23 @@ identity:
 instructions:
   system: instructions/system.md
   guardrails: instructions/guardrails.md
-skills: []
+skills:
+  - id: ac-reforma-tributaria-sem-surto
+    entrypoint: SKILL.md
+    interface: agents/openai.yaml
+    references:
+      - references/source-policy.md
+      - references/response-modes.md
 connectors: []
 evaluations:
   - evaluations/source-capture.md
+  - evaluations/live-editor-audit-2026-09-20.md
+  - evaluations/parity/questions.yaml
+  - evaluations/parity/install-validation-2026-09-20.md
+  - evaluations/parity/local-results-2026-09-20.md
+  - evaluations/parity/gpt-outputs-2026-09-20.md
+  - evaluations/parity/gpt-comparison-2026-09-20.md
+  - evaluations/parity/original-source-verification-2026-09-20.md
   - evaluations/scenarios/T1.md
   - evaluations/scenarios/T2.md
   - evaluations/scenarios/T3.md

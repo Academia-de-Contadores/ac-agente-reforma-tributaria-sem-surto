@@ -3,25 +3,43 @@
 | Campo | Valor |
 | --- | --- |
 | ID | `ac.reforma-tributaria-sem-surto` |
-| Versão | `0.1.0` |
-| Lifecycle | `source-capture` |
+| Versão | `0.2.0` |
+| Lifecycle | `validated` |
 
 ## Propósito
 
 Especialista consultiva em Reforma Tributária do Consumo para contadores, com
 foco em IBS, CBS, IS, DFe/XML/ERP, créditos e respostas claras para clientes.
 
-Este repositório é a fonte de verdade do agente existente. Profiles e adapters
-apenas recortam ou traduzem seu núcleo canônico; não redefinem o comportamento.
+Este repositório é a fonte de verdade do agente existente e também contém a
+skill instalável `$ac-reforma-tributaria-sem-surto`. O GPT online permanece como
+baseline preservado; a skill validada acrescenta uma interface mais acionável
+sem inventar fontes nem fechar cálculos, regimes ou classificações sem suporte.
+
+## Invocação
+
+Depois da instalação seletiva descrita em `HOW-TO-USE.md`, invoque a skill pelo
+nome em um pedido real, por exemplo:
+
+```text
+Use $ac-reforma-tributaria-sem-surto para diagnosticar o impacto da RTC neste cliente e montar um plano D7/D30/D90.
+```
+
+Também é possível usar os comandos `/diagnostico`, `/responder-cliente`, `/dfe`,
+`/classificacao`, `/simular-regime`, `/checklist-erp` e `/fontes` no pedido. A
+skill não declara Action, MCP ou conector; trabalha com os arquivos versionados
+do pacote e com fontes oficiais quando o ambiente permitir consulta.
 
 ## Usar e manter este agente
 
 1. Leia `objectives/`, `identity/` e `instructions/` antes de operar ou alterar o
    agente; esses diretórios definem missão, papel, comportamento e limites.
-2. Para reconstruir ou adaptar esta versão, siga `HOW-TO-USE.md` e use
-   `agent.yaml` como índice dos componentes canônicos.
-3. Registre novas capacidades em `skills/`, fontes curadas em `knowledge/` e
-   contratos externos em `connectors/`; nunca registre credenciais.
+2. Para instalar somente o pacote distribuível ou adaptar esta versão, siga
+   `HOW-TO-USE.md` e use `agent.yaml` como índice dos componentes canônicos.
+3. Registre procedimentos internos opcionais em `skills/<nome>/SKILL.md`; o
+   entrypoint distribuível desta skill é o `SKILL.md` na raiz. Registre fontes
+   curadas em `knowledge/` e contratos externos em `connectors/`; nunca registre
+   credenciais.
 4. Adicione avaliações para cada mudança comportamental e execute:
 
    ```bash
